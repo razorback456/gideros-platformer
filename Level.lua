@@ -60,13 +60,11 @@ function Level:load(name)
 				for _,v in ipairs(layer.objects) do
 					-- ONLY non rotated rectangles, becouse collision engine is for AABB's (:
 					if (v.shape == "rectangle" and v.rotation == 0) then
-						local props = {}
-						for k,p in pairs(v.properties) do props[k]=p end
-						self.world:add(props, v.x, v.y, v.width, v.height)
+						self.world:add(v.properties, v.x, v.y, v.width, v.height)
 					elseif (v.shape == "point" and v.rotation == 0) then
 						data.playerData.x = v.x
 						data.playerData.y = v.y
-						for k,p in pairs(v.properties) do data.playerData[k] = p end
+						data.playerData = v.properties
 					end
 				end
 			end
