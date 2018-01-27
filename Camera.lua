@@ -47,10 +47,7 @@ function Camera:addLayers(...)
 		for i = 1, #t do
 			local p = t[i][2] or 1
 			local name = t[i][1]
-			local layer = Layer.new(name, p)
-			self.layers[i] = layer
-			self.layersNames[name] = i
-			self:addChild(layer)
+			self:addLayer(name, p)
 		end
 	end
 end
