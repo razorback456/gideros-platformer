@@ -1,0 +1,31 @@
+<project>
+ <properties windowHeight="0" backgroundColor="#ffffff" iosDevice="0" touchToMouse="1" osx_domain="giderosmobile.com" osx_category="5" winrt_org="GiderosMobile" tv_icon="" splash_h_image="" win_org="GiderosMobile" html5_pack="0" html5_host="" mouseToTouch="1" orientation="1" encryptAssets="0" osx_org="GiderosMobile" fps="60" app_icon="" logicalWidth="480" win_domain="giderosmobile.com" exportMode="0" windowWidth="0" app_name="" version_code="1" splash_v_image="" version="1.0" architecture="0" winrt_package="com.yourdomain.yourapp" osx_installerId="" disableSplash="0" encryptCode="0" osx_signingId="" scaleMode="3" logicalHeight="800" build_number="1" mouseTouchOrder="0" retinaDisplay="0" osx_bundle="com.yourdomain." android_template="0" packageName="com.yourdomain.yourapp" splashScaleMode="0" html5_mem="256" ios_bundle="com.yourdomain." autorotation="0">
+  <imageScales/>
+  <plugins/>
+  <exports/>
+ </properties>
+ <file source="utils.lua"/>
+ <file source="test.lua"/>
+ <folder name="gfx">
+  <file source="gfx/char.png"/>
+  <file source="gfx/rock.png"/>
+  <file source="gfx/goodly-2x.png"/>
+ </folder>
+ <folder name="levels">
+  <file excludeFromExecution="1" source="map.lua"/>
+ </folder>
+ <folder name="Stuff">
+  <file source="fpsCounter.lua"/>
+  <file source="Player.lua"/>
+  <file source="Platformer.lua"/>
+  <file source="Level.lua"/>
+  <file source="Camera.lua"/>
+  <file source="Layer.lua"/>
+  <file excludeFromExecution="1" source="bump.lua"/>
+ </folder>
+ <folder name="Scenes">
+  <file source="GameScene.lua"/>
+ </folder>
+ <file source="init.lua"/>
+ <file source="main.lua"/>
+</project>
