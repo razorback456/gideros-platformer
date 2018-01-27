@@ -4,7 +4,7 @@ Camera = Core.class(Sprite)
 -- name: string, name of the layer
 -- paralax: float, paralax effect in range [0, 1], by default is 1
 --
--- NOTE: camera's postion in centered
+-- NOTE: camera's postion is centered
 function Camera:init(...)
 	self.x = 0
 	self.y = 0
