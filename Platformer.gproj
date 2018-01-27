@@ -5,7 +5,6 @@
   <exports/>
  </properties>
  <file source="utils.lua"/>
- <file source="test.lua"/>
  <folder name="gfx">
   <file source="gfx/char.png"/>
   <file source="gfx/rock.png"/>
