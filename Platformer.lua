@@ -1,5 +1,13 @@
 local GRAVITY = 1200
 
+local function afterJump(self)
+	if (self.dy ~= 0) then
+		self.curJumps += 1
+		self.isOnFloor = false
+		self:dispatchEvent(self.jumpEvent)
+	end
+end
+
 Platformer = Core.class(Sprite)
 
 function Platformer:init(world, params)
@@ -151,53 +159,33 @@ function Platformer:applyForceAtAngle(ang, forceX, forceY)
 	forceY = tonumber(forceY)
 	self.dx += forceX * math.cos(ang)
 	self.dy += forceY * math.sin(ang)
-	if (self.dy ~= 0) then
-		self.curJumps = 1
-		self.isOnFloor = false
-		self:dispatchEvent(self.jumpEvent)
-	end	
+	afterJump(self)	
 end
 --
 function Platformer:applyForceX(force) self.dx += tonumber(force) end
 
 function Platformer:applyForceY(force)
 	self.dy += tonumber(force)
-	if (self.dy ~= 0) then
-		self.curJumps = 1
-		self.isOnFloor = false
-		self:dispatchEvent(self.jumpEvent)
-	end	
+	afterJump(self)	
 end
 --
 function Platformer:applyForce(forceX, forceY) 
 	self.dx += tonumber(forceX)
 	self.dy += tonumber(forceY)
-	if (self.dy ~= 0) then
-		self.curJumps = 1
-		self.isOnFloor = false
-		self:dispatchEvent(self.jumpEvent)
-	end	
+	afterJump(self)	
 end
 --
 function Platformer:setForceX(force) self.dx = tonumber(force) end
 
 function Platformer:setForceY(force) 
 	self.dy = tonumber(force) 
-	if (self.dy ~= 0) then
-		self.curJumps = 1
-		self.isOnFloor = false
-		self:dispatchEvent(self.jumpEvent)
-	end
+	afterJump(self)
 end
 --
 function Platformer:setForce(forceX, forceY) 
 	self.dx = tonumber(forceX)
 	self.dy = tonumber(forceY)
-	if (forceY ~= 0) then
-		self.curJumps = 1
-		self.isOnFloor = false
-		self:dispatchEvent(self.jumpEvent)
-	end
+	afterJump(self)
 end
 --
 function Platformer:setGravity(grav) GRAVITY = tonumber(grav) end
