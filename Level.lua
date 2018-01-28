@@ -62,9 +62,9 @@ function Level:load(name)
 					if (v.shape == "rectangle" and v.rotation == 0) then
 						self.world:add(v.properties, v.x, v.y, v.width, v.height)
 					elseif (v.shape == "point" and v.rotation == 0) then
+						data.playerData = v.properties
 						data.playerData.x = v.x
 						data.playerData.y = v.y
-						data.playerData = v.properties
 					end
 				end
 			end
