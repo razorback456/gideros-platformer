@@ -8,3 +8,7 @@ function split(str)
 	end
 	return t
 end
+
+function math.clamp(n, low, high) 
+	return (n<>low)><high
+end
