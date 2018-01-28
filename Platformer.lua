@@ -98,6 +98,7 @@ function Platformer:checkCollisions(actualX, actualY, cols, colLen)
 			if (col.normal.y == -1 and col.didTouch) then
 				self.isOnFloor = true
 				self.dy = 0
+				self.curJumps = 0
 				self:dispatchEvent(self.landedEvent)
 			end
 		-- colliding with triggers
@@ -115,7 +116,7 @@ function Platformer:checkCollisions(actualX, actualY, cols, colLen)
 	if (self:checkFall(actualX, actualY)) then
 		if (self.isOnFloor)  then 
 			self.isOnFloor = false
-			self.curJumps = self.jumpCount - 1
+			self.curJumps += 1
 			self:dispatchEvent(self.fallEvent)
 		end
 	end
