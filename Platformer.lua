@@ -103,7 +103,7 @@ function Platformer:checkCollisions(actualX, actualY, cols, colLen)
 		-- colliding with triggers
 		elseif (col.other.isTrigger) then
 			-- parsing params which is string like "1, 2, 3"
-			local params = split(col.other.params, ", +")
+			local params = split(col.other.params)
 			-- call "triggerName" method with params
 			if (pcall(self[col.other.triggerName], self, unpack(params))) then
 				self:dispatchEvent(self.triggerHit)
