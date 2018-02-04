@@ -45,8 +45,8 @@ function Level:load(name)
 					local gid = layer.data[i]
 					
 					if (gid > 0) then
-						local ty = ((gid) // tilesetWidth) + 1
-						local tx = (tilesetWidth - (tilesetWidth * ty) + gid)
+						local tx = (gid - 1) %  tilesetWidth + 1
+						local ty = (gid - 1) // tilesetWidth + 1
 						
 						tilemap:setTile(x, y, tx, ty)
 					end
