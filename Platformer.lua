@@ -2,10 +2,12 @@ local GRAVITY = 1200
 
 local function afterJump(self)
 	if (self.dy ~= 0) then
+		self.dy = (not(self.maxAppForceY[1] == 0 or self.maxAppForceY[2] == 0)) and (math.clamp(self.dy, self.maxAppForceY[1], self.maxAppForceY[2]) ) or self.dy
 		self.curJumps += 1
 		self.isOnFloor = false
 		self:dispatchEvent(self.jumpEvent)
 	end
+	self.dx = (not(self.maxAppForceX[1] == 0 or self.maxAppForceX[2] == 0)) and (math.clamp(self.dx, self.maxAppForceX[1], self.maxAppForceX[2]) ) or self.dx
 end
 
 Platformer = Core.class(Sprite)
@@ -35,6 +37,9 @@ function Platformer:init(world, params)
 	self.moveSpeed = 50	
 	self.friction = 5	
 	self.curJumps = 1	-- how many times platformer already jumped
+	
+	self.maxAppForceX 	= {-800, 800}		-- X force limitation {min, max}
+	self.maxAppForceY 	= {-GRAVITY, GRAVITY}	-- Y force limitation {min, max}
 	
 	--
 	self.isOnFloor = false
@@ -131,8 +136,13 @@ function Platformer:checkCollisions(actualX, actualY, cols, colLen)
 end
 --
 function Platformer:checkFall(x,y)
-	local _,l = self.world:project("ray", x, y+self.h, self.w, 2, x, y+self.h)
-	return l == 0
+	local c,l = self.world:project("ray", x, y+self.h, self.w, 2, x, y+self.h)
+	if (l > 0) then 
+		for i = 1, l do 
+			if (c[i].other.isWall) then return false end
+		end
+	end
+	return true
 end
 --
 function Platformer:moveLeft(flag) self.movingLeft = flag end
