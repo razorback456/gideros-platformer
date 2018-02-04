@@ -3,7 +3,7 @@ function split(str)
 	local i = 1
 	for v in string.gmatch(str, "[%-%w.]+") do 
 		local n = tonumber(v)
-		t[i] = v--(n == nil) and v or n
+		t[i] = v
 		i += 1
 	end
 	return t
