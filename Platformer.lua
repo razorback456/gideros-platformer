@@ -139,7 +139,7 @@ function Platformer:checkFall(x,y)
 	local c,l = self.world:project("ray", x, y+self.h, self.w, 2, x, y+self.h)
 	if (l > 0) then 
 		for i = 1, l do 
-			if (c[i].other.isWall) then return false end
+			if (c[i].other.isWall or c[i].other.isOneWay) then return false end
 		end
 	end
 	return true
